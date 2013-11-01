@@ -1,5 +1,0 @@
-category: Net KDE
-requires: alternatives libkdecore5 libQtCore4 libQtGui4
-sdesc: "KDE passphrase dialog for ssh-add"
-ldesc: "Ksshaskpass is a front-end for ssh-add which stores the password 
-of the ssh key in KWallet."
