@@ -1,29 +1,9 @@
-inherit kde4
+inherit kf5
 
 NAME="ksshaskpass"
-VERSION=0.5.3
+VERSION=5.8.5
 RELEASE=1
 CATEGORY="KDE"
 SUMMARY="KDE passphrase dialog for ssh-add"
 DESCRIPTION="Ksshaskpass is a front-end for ssh-add which stores the password
 of the ssh key in KWallet."
-HOMEPAGE="http://kde-apps.org/content/show.php?content=50971"
-SRC_URI="http://kde-apps.org/CONTENT/content-files/50971-${NAME}-${VERSION}.tar.gz"
-
-src_compile() {
-	KDE_CFLAGS="-I/usr/include/kde4/KDE -I/usr/include/kde4 -I/usr/include/qt4/QtCore -I/usr/include/qt4"
-	KDE_LIBS="-L${QT4_LIBDIR} -lkdeui -lkdecore -lQtGui -lQtCore"
-
-	lndirs
-	cd ${B}/src
-	${CXX} ${CXXFLAGS} ${KDE_CFLAGS} ${LDFLAGS} -o ${PN}.exe main.cpp ${KDE_LIBS} || error
-}
-
-src_install() {
-	cd ${B}
-	exeinto /usr/lib/kde4/libexec
-	doexe src/${PN}.exe
-#	domenu src/${PN}.desktop
-	doman doc/${PN}.1
-	doenv SSH_ASKPASS /usr/sbin/ssh-askpass
-}
